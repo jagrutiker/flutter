@@ -1,0 +1,56 @@
+import 'package:flutter/material.dart'; void 
+main() { 
+runApp(MyApp()); 
+} 
+class MyApp extends StatelessWidget { 
+@override 
+Widget build(BuildContext context) { return MaterialApp( 
+title: 'Navigation Example', 
+initialRoute: '/', routes: { '/': 
+(context) => FirstRoute(), 
+'/profile': (context) => SecondRoute(), 
+}, ); } 
+} 
+class FirstRoute extends StatelessWidget { 
+@override 
+Widget build(BuildContext context) { return Scaffold( 
+appBar: AppBar( title: Row( children: [ 
+Icon(Icons.home), // Home icon 
+SizedBox(width: 8), // Add some spacing 
+Text('Home Page'), 
+], 
+), 
+), 
+body: Container( decoration: BoxDecoration( gradient: 
+LinearGradient( colors: [Colors.blue, Colors.lightBlueAccent], begin: 
+Alignment.topCenter, 
+end: Alignment.bottomCenter, 
+), 
+), 
+child: Center( child: Column( 
+mainAxisAlignment: MainAxisAlignment.center, children: [ 
+ElevatedButton( onPressed: () { 
+// Navigate to the profile page when tapped. 
+Navigator.pushNamed(context, '/profile'); 
+}, child: Text('Go to Profile'), 
+), ], ), 
+), ), ); 
+} 
+} 
+class SecondRoute extends StatelessWidget { 
+@override 
+Widget build(BuildContext context) { return Scaffold( 
+appBar: AppBar( title: Row( children: [ 
+Icon(Icons.person), // Profile icon 
+SizedBox(width: 8), // Add some spacing 
+Text('Profile Page'), 
+], 
+), 
+), 
+body: Container( decoration: BoxDecoration( gradient: LinearGradient( 
+colors: [Colors.purple, Colors.deepPurpleAccent], begin: 
+Alignment.topCenter, 
+end: Alignment.bottomCenter, 
+), ), ), 
+); } 
+} 
